@@ -22,6 +22,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     mv composer.phar /usr/local/bin/composer && \
     chown -R www-data:www-data /var/www && \
     curl https://drupalconsole.com/installer -L -o drupal.phar && chmod +x drupal.phar && mv ./drupal.phar /usr/local/bin/drupal && \
+    composer config -g repo.packagist composer https://packagist.laravel-china.org && \
     echo Composer installed
 
 RUN apt install -y nginx php-fpm mysql-client && \
