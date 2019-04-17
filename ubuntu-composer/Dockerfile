@@ -8,11 +8,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y && \
     apt-get install -y software-properties-common tmux git vim --fix-missing && \
-    # add-apt-repository -y ppa:ondrej/php && \
+    add-apt-repository -y ppa:ondrej/php && \
     apt update && \
-    apt install -y php7.3 --fix-missing && \
+    apt install -y php7.2 --fix-missing && \
     php -v && \
-    apt install -y --fix-missing php7.3-{curl,dev,gd,mbstring,zip,mysql,xml,bcmath,bz2,intl,fpm} php-pear unzip && \
+    apt install -y --fix-missing php-pear php7.2-curl php7.2-dev php7.2-gd php7.2-mbstring php7.2-zip php7.2-mysql php7.2-xml php7.2-zip php7.2-fpm unzip && \
+    # apt install -y --fix-missing php-{curl,dev,gd,mbstring,zip,mysql,xml,bcmath,bz2,intl,fpm} php-pear unzip && \
     echo PHP installed
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
