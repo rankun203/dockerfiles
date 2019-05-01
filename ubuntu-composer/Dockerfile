@@ -12,9 +12,10 @@ RUN apt update && apt upgrade -y && \
     apt-get install -y software-properties-common tmux git vim gosu --fix-missing && \
     add-apt-repository -y ppa:ondrej/php && \
     apt update && \
-    apt install -y php7.3 --fix-missing && \
+    apt install -y php7.2 --fix-missing && \
     php -v && \
-    apt install -y --fix-missing php-pear php7.3-curl php7.3-dev php7.3-gd php7.3-mbstring php7.3-zip php7.3-mysql php7.3-xml php-zip unzip && \
+    apt install -y --fix-missing php-pear php7.2-curl php7.2-dev php7.2-gd php7.2-mbstring php7.2-zip php7.2-mysql php7.2-xml php7.2-zip php7.2-fpm unzip && \
+    # apt install -y --fix-missing php-{curl,dev,gd,mbstring,zip,mysql,xml,bcmath,bz2,intl,fpm} php-pear unzip && \
     echo PHP installed
 
 # Commands borrowed from https://getcomposer.org/download/
@@ -25,7 +26,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     mv composer.phar /usr/local/bin/composer && \
     chown -R www-data:www-data /var/www && \
     curl https://drupalconsole.com/installer -L -o drupal.phar && chmod +x drupal.phar && mv ./drupal.phar /usr/local/bin/drupal && \
+    composer config -g repo.packagist composer https://packagist.laravel-china.org && \
     echo Composer installed
 
-RUN apt install -y nginx php-fpm mysql-client && \
+RUN apt install -y --fix-missing nginx mysql-client && \
     echo Nginx installed
