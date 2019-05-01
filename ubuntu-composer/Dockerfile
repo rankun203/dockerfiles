@@ -6,7 +6,7 @@ LABEL maintainer="Kun R<rankun203@gmail.com>"
 ENV TZ=Asia/Shanghai
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY rootfs /
+COPY ./rootfs /
 
 RUN apt update && apt upgrade -y && \
     apt-get install -y software-properties-common tmux git vim gosu --fix-missing && \
