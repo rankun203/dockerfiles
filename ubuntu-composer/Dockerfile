@@ -6,8 +6,10 @@ LABEL maintainer="Kun R<rankun203@gmail.com>"
 ENV TZ=Asia/Shanghai
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY rootfs /
+
 RUN apt update && apt upgrade -y && \
-    apt-get install -y software-properties-common tmux git vim --fix-missing && \
+    apt-get install -y software-properties-common tmux git vim gosu --fix-missing && \
     add-apt-repository -y ppa:ondrej/php && \
     apt update && \
     apt install -y php7.3 --fix-missing && \
